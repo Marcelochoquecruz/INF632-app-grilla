@@ -75,7 +75,7 @@ class MainView extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Aplicaciones móviles',
+                            'Desarrollo de Aplicaciones móviles',
                             style: TextStyle(
                               fontSize: screenWidth < 600 ? 28 : 32,
                               fontWeight: FontWeight.bold,
