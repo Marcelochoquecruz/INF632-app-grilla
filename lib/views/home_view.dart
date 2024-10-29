@@ -28,18 +28,11 @@ class HomeView extends StatelessWidget {
         builder: (context, orientation) {
           return LayoutBuilder(
             builder: (context, constraints) {
-              // Calculamos el número de columnas basado en el ancho disponible
               final double width = constraints.maxWidth;
-              int crossAxisCount;
+              int crossAxisCount = orientation == Orientation.portrait
+                  ? (width < 600 ? 2 : 3)
+                  : (width < 900 ? 3 : 4);
 
-              // Ajustamos el número de columnas según la orientación y el ancho
-              if (orientation == Orientation.portrait) {
-                crossAxisCount = width < 600 ? 2 : 3;
-              } else {
-                crossAxisCount = width < 900 ? 3 : 4;
-              }
-
-              // Calculamos el aspect ratio para mantener las imágenes proporcionadas
               final double aspectRatio =
                   orientation == Orientation.portrait ? 0.8 : 1.2;
 
@@ -87,32 +80,18 @@ class HomeView extends StatelessWidget {
                                 },
                                 errorBuilder: (context, error, stackTrace) {
                                   return const Center(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.error_outline,
-                                          color: Colors.red,
-                                          size: 32,
-                                        ),
-                                        SizedBox(height: 8),
-                                        Text(
-                                          'Error al cargar imagen',
-                                          style: TextStyle(color: Colors.red),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
+                                    child: Icon(
+                                      Icons.error_outline,
+                                      color: Colors.red,
+                                      size: 32,
                                     ),
                                   );
                                 },
                               ),
-                              // Overlay oscuro y texto al hacer tap
                               Material(
                                 color: Colors.transparent,
                                 child: InkWell(
                                   onTap: () {
-                                    // Mostrar imagen en pantalla completa
                                     Get.to(
                                       () => FullScreenImage(
                                         imageUrl: imageUrls[index],
@@ -161,7 +140,6 @@ class HomeView extends StatelessWidget {
   }
 }
 
-// Widget para mostrar la imagen en pantalla completa
 class FullScreenImage extends StatelessWidget {
   final String imageUrl;
   final int index;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ClockWidget extends StatelessWidget {
-  const ClockWidget({Key? key}) : super(key: key);
+  const ClockWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

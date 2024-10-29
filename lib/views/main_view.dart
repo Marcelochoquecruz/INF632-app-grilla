@@ -8,7 +8,7 @@ import '../widgets/custom_card.dart';
 import '../controllers/theme_controller.dart';
 
 class FloatingPhonesWidget extends StatelessWidget {
-  FloatingPhonesWidget({Key? key}) : super(key: key);
+  FloatingPhonesWidget({super.key});
 
   final Random random = Random();
   final List<Color> colors = [
