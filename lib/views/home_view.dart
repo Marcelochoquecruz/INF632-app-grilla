@@ -145,10 +145,10 @@ class FullScreenImage extends StatelessWidget {
   final int index;
 
   const FullScreenImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
